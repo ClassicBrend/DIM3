@@ -1,0 +1,7 @@
+from django.http import HttpResponse
+
+def index(request):
+    return HttpResponse("Go Scavenge Starter Page")
+    
+def about(request):
+    return HttpResponse("Go Scavenge About Page")

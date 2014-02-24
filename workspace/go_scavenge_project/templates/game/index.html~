@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+
+{% load static %}
+
+<html>
+
+    <head>
+        <title>GO_SCAVENGE</title>
+    </head>
+    
+    <body>
+        <img src="{% static "zombie.png" %}" alt="Logo"/>
+        <h1>Go Scavenge</h1>
+        How long can you <strong>{{ boldmessage }}</strong><br />
+    </body>
+
+</html>
