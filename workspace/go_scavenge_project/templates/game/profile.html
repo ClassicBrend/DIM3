@@ -1,0 +1,17 @@
+<html>
+
+    <head>
+        <title>USER PROFILE</title>
+    </head>
+    
+    <body>
+        <h1>User Profile</h1>
+	<img src=  {{ user.picture }} alt="some_text"> <br />
+        Name: {{ user.username }} <br />
+	Longest Session: {{ stat.longest_session }} <br />
+	Alltime Best Amount Of Survivors: {{ stat.max_survivors }}<br />
+	Alltime Highest Amount Of Supplies: {{ stat.supplies }}
+	
+    </body>
+
+</html>
