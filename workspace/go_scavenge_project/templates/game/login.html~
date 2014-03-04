@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>GO_SCAVENGE</title>
+        <title>Rango</title>
     </head>
     
     <body>
-        <h1>Login to go_scavenge</h1>
+        <h1>Login to Rango</h1>
         
-        <form id="login_form" method="post" action="/game/login/">
+        <form id="login_form" method="post" action="/rango/login/">
             {% csrf_token %}
             Username: <input type="text" name="username" value="" size="50" />
             <br />
