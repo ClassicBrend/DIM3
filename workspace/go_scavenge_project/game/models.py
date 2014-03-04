@@ -8,6 +8,9 @@ class Stats(models.Model):
     user = models.ForeignKey(User)
     longest_session = models.CharField(max_length=30)
     max_survivors = models.CharField(max_length=30)
+    supplies = models.IntegerField()
+    game_data = models.CharField()
+    
         
 
 

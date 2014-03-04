@@ -1,5 +1,4 @@
 from django.contrib import admin
-from game.models import User
+from game.models import UserProfile
 
-admin.site.register(User)
-
+admin.site.register(UserProfile)
