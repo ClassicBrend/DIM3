@@ -1,19 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Rango</title>
+        <title>GO SCAVENGE</title>
     </head>
     
     <body>
-        <h1>Register with Rango</h1>
+        <h1>Register with Go Scavenge</h1>
         
         {% if registered %}
-        Rango say: <strong>thank you for registering!</strong>
-        <a href="/rango/">Return to the homepage.</a><br />
+        <strong>Thank you for registering!</strong>
+        <a href="/game/">Return to the homepage.</a><br />
         {% else %}
-        Rango says: <strong>register here!</strong><br />
+        <strong>Register here!</strong><br />
         
-        <form id="user_form" method="post" action="/rango/register/" enctype="multipart/form-data">
+        <form id="user_form" method="post" action="/game/register/" enctype="multipart/form-data">
         
             {% csrf_token %}
             
