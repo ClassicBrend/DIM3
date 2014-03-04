@@ -11,7 +11,11 @@
     <body>
         <img src="{% static "zombie.png" %}" alt="Logo"/>
         <h1>Go Scavenge</h1>
-        How long can you <strong>{{ boldmessage }}</strong><br />
+        {% if user.is_authenticated %}
+            How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />
+        {% else %}
+            How long can you <strong>{{ boldmessage }}</strong><br />
+        {% endif %}
     </body>
 
 </html>
