@@ -1,10 +1,16 @@
+<!DOCTYPE html>
+
+{% extends 'game/base.html' %}
+{% load static %}
+
 <html>
 
     <head>
         <title>USER PROFILE</title>
     </head>
     
-    <body>
+    {% block body_block %}
+    <div class="hero-unit">
         <h1>User Profile</h1>
 	<img src=  {{ userProfile.picture }} alt="Profile Picture"> <br />
         Name: {{ user.username }} <br />
@@ -13,6 +19,7 @@
 	Alltime Highest Amount Of Supplies: {{ stat.supplies }} <br />
 	About: {{userProfile.about }}
 	
-    </body>
+    </div>
+    {% endblock %}
 
 </html>
