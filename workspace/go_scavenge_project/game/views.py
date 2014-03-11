@@ -112,7 +112,11 @@ def user_logout(request):
     return HttpResponseRedirect('/game/')
 
 def profile(request):
-    return HttpResponse("Go Scavenge About Page")
+    context = RequestContext(request)
+
+
+    return render_to_response('game/profile.html', context)
+    
 def leaderboard(request):
     return HttpResponse("Go Scavenge About Page")
 def play(request):
