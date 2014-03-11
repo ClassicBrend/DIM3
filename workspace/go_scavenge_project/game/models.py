@@ -17,3 +17,6 @@ class Stat(models.Model):
     longest_session = models.IntegerField()
     max_survivors = models.IntegerField()
     supplies = models.IntegerField()
+    
+    def __unicode__(self):
+        return self.user.username
