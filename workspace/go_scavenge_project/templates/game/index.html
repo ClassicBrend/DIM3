@@ -8,25 +8,36 @@
 
     </head>
     
+    
     {% block body_block %}
     <div class="hero-unit">
         <img src=  "{% static "img/logo.png" %}" <br />
-	<table border="1" style="width:300px">
+<h2> Leaderboard </h2>	
 
+{% if stats %}
 
-<h2> Leaderboard </h2>
-<tr>
+<table border="3" style="width:300px">
+<font size="4">
   <th>User</th>
-  <th>Points</th>
+  <th>Supplies</th>
+  <th>Maximum Survivors</th>
+  <th>Longest Session</th>
 </tr>
-  <td>Chris</td>
-  <td>50</td>
-</tr>
+{% for stat in stats %}
 <tr>
-  <td>Eve</td>
-  <td>94</td>
+  <td>{{ stat.user }}</td>
+  <td>{{ stat.supplies }}</td>
+  <td>{{ stat.max_survivors }}</td>
+  <td>{{ stat.longest_session }}</td>
 </tr>
-</table> 
+{% endfor %}
+</table>
+{% else %}
+            <strong>There are no categories present.</strong>
+{% endif %}
+
+
+ 
 <button type="submit" class="btn btn-primary">	Play</button>
 
         {% if user.is_authenticated %}
