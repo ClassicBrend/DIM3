@@ -12,28 +12,26 @@
     
     {% block body_block %}
     <div class="hero-unit">
-        <img src=  "http://r68.cooltext.com/rendered/cooltext1469430183.png" alt="some_text" > <br />
+        <img src=  "{% static 'img/logo.png' %}" alt="some_text" > <br />
 
             <div id="gameSpace">
 
-                <img src=   "http://4vector.com/i/free-vector-home-clip-art_110021_Home_clip_art_hight.png" alt="some_text" height="82" width="82">  <button type="button" onclick="alert('Good Luck!')" id="House1" >Scavenge House</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="button" class="btn btn-primary" onclick="alert('Good Luck!')" id="House1" >Scavenge House 1</button> <br /> <br />
 
-                <img src=   "http://4vector.com/i/free-vector-home-clip-art_110021_Home_clip_art_hight.png" alt="some_text" height="82" width="82"> <button type="button" onclick="alert('Good Luck!')" id="House2" >Scavenge House</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House2" >Scavenge House 2</button> <br /> <br />
 
-                <img src=   "http://4vector.com/i/free-vector-home-clip-art_110021_Home_clip_art_hight.png" alt="some_text" height="82" width="82">  <button type="button" onclick="alert('Good Luck!')" id="House3" >Scavenge House</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"   alt="some_text" height="82" width="82">  <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House3" >Scavenge House 3</button> <br /> <br />
 
-                <img src=   "http://4vector.com/i/free-vector-home-clip-art_110021_Home_clip_art_hight.png" alt="some_text" height="82" width="82">  <button type="button" onclick="alert('Good Luck!')" id="House4" >Scavenge House</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House4" >Scavenge House 4</button> <br /> <br />
 
-                <img src=   "http://4vector.com/i/free-vector-home-clip-art_110021_Home_clip_art_hight.png" alt="some_text" height="82" width="82"> <button type="button" onclick="alert('Good Luck!')" id="House5" >Scavenge House</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House5" >Scavenge House 5</button> <br /> <br />
 
                 <div id="stats">
                     Current Food Supply: <br />
                     Current Ammuntion: <br />
                     Current number of survivors:
                 </div>
-                <div id="logfunction">
-                <button type="button" onclick="alert('Logged out!')" id="logout">Log Out</button>
-                </div>
+
 
 
     </div>

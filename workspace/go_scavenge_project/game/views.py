@@ -141,3 +141,7 @@ def move(request):
     return HttpResponse("Go Scavenge About Page")
 def stay(request):
     return HttpResponse("Go Scavenge About Page")
+
+def gamescreen(request):
+    context = RequestContext(request)
+    return render_to_response('game/gamescreen.html', context)
