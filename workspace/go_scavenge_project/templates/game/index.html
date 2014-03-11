@@ -17,14 +17,21 @@
   <th>User</th>
   <th>Points</th>
 </tr>
-  <td>{{ Stat.user }}</td>
+  <td>{{ stat.longest_session }}</td>
   <td>50</td>
 </tr>
-<tr>
-  <td>Eve</td>
-  <td>94</td>
-</tr>
 </table>
+
+
+        {% if stats_all %}
+            <ul>
+                {% for stat in stats_all %}
+                <li>{{ stat.max_survivors }}</li>
+                {% endfor %}
+            </ul>
+        {% else %}
+            <strong>There are no categories present.</strong>
+        {% endif %}
 
         {% if user.is_authenticated %}
             How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />
