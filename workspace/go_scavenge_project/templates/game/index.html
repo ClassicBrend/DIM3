@@ -10,9 +10,9 @@
     
     {% block body_block %}
     <div class="hero-unit">
-        <img src=  "http://r68.cooltext.com/rendered/cooltext1469430183.png" alt="some_text" > <br />
+         <img src="{% static "img/logo.png" %}" alt="Logo"/>
         <h1>Go Scavenge</h1>
-	<table border="1" style="width:300px">
+<table border="1" style="width:300px">
 <tr>
   <th>User</th>
   <th>Points</th>
@@ -24,7 +24,7 @@
   <td>Eve</td>
   <td>94</td>
 </tr>
-</table> 
+</table>
 
         {% if user.is_authenticated %}
             How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />
