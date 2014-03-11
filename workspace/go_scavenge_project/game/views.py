@@ -4,6 +4,11 @@ from django.http import HttpResponse,HttpResponseRedirect
 from game.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
+from game.models import UserProfile, Stat
+from django.contrib.auth.models import User
+
+
+
 
 from houseTest import test, startGame,Player,newarea
 
@@ -16,8 +21,11 @@ def testFunc(request):
 
 def index(request):
     context = RequestContext(request)
+
+
+    stats_list = Stat.objects.all()[:5]
+    context_dict = {'boldmessage':"Survive?", 'stats': stats_list}
     
-    context_dict = {'boldmessage':"Survive?"}
 
     return render_to_response('game/index.html', context_dict, context)
 
@@ -114,8 +122,16 @@ def user_logout(request):
 def profile(request):
     context = RequestContext(request)
 
+    individual_list = Stat.objects.filter(user=request.user)
+    profile = UserProfile.objects.filter(user=request.user)
+  
 
-    return render_to_response('game/profile.html', context)
+    context_dict = {'stats': individual_list, 'pa':profile[0].about, 'pp': profile[0].picture}
+
+
+
+
+    return render_to_response('game/profile.html', context_dict, context)
     
 def leaderboard(request):
     return HttpResponse("Go Scavenge About Page")
