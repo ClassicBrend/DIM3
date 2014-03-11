@@ -10,28 +10,24 @@
     
     {% block body_block %}
     <div class="hero-unit">
-         <img src="{% static "img/logo.png" %}" alt="Logo"/>
-        <h1>Go Scavenge</h1>
-<table border="1" style="width:300px">
+        <img src=  "{% static "img/logo.png" %}" <br />
+	<table border="1" style="width:300px">
+
+
+<h2> Leaderboard </h2>
 <tr>
   <th>User</th>
   <th>Points</th>
 </tr>
-  <td>{{ stat.longest_session }}</td>
+  <td>Chris</td>
   <td>50</td>
 </tr>
-</table>
-
-
-        {% if stats_all %}
-            <ul>
-                {% for stat in stats_all %}
-                <li>{{ stat.max_survivors }}</li>
-                {% endfor %}
-            </ul>
-        {% else %}
-            <strong>There are no categories present.</strong>
-        {% endif %}
+<tr>
+  <td>Eve</td>
+  <td>94</td>
+</tr>
+</table> 
+<button type="submit" class="btn btn-primary">	Play</button>
 
         {% if user.is_authenticated %}
             How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />
@@ -42,4 +38,7 @@
     <!--/row-->
     {% endblock %}
 
+
+
 </html>
+
