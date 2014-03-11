@@ -5,6 +5,14 @@ from game.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 
+from houseTest import test, startGame,Player,newarea
+
+
+def testFunc(request):
+	context = RequestContext(request)
+	testText = test()
+	testDict = startGame()
+	return HttpResponse(testText + str(testDict))
 
 def index(request):
     context = RequestContext(request)
