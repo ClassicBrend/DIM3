@@ -5,21 +5,22 @@ from game.forms import UserForm, UserProfileForm
 from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 
+
 def index(request):
     context = RequestContext(request)
     
     context_dict = {'boldmessage':"Survive?"}
-    
-    
-    return render_to_response('game/index.html',context_dict,context)
-    
+
+    return render_to_response('game/index.html', context_dict, context)
+
+
 def about(request):
     return HttpResponse("Go Scavenge About Page")
-    
+
+
 def user_login(request):
 
     context = RequestContext(request)
-
 
     if request.method == 'POST':
         # Gather the username and password provided by the user.
@@ -81,7 +82,7 @@ def register(request):
                 
             profile.save()
             
-            registered = True;
+            registered = True
         
         else:
             print user_form.errors, profile_form.errors
@@ -92,8 +93,15 @@ def register(request):
         
     return render_to_response(
         'game/register.html',
-        {'user_form': user_form, 'profile_form': profile_form, 'registered' : registered},
+        {'user_form': user_form, 'profile_form': profile_form, 'registered': registered},
         context)
+
+
+@login_required
+def user_logout(request):
+    logout(request)
+
+    return HttpResponseRedirect('/game/')
 
 def profile(request):
     return HttpResponse("Go Scavenge About Page")

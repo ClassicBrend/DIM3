@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-
+{% extends 'game/base.html' %}
 {% load static %}
 
 <html>
@@ -8,7 +8,8 @@
         <title>GO SCAVENGE</title>
     </head>
     
-    <body>
+    {% block body_block %}
+    <div class="hero-unit">
         <img src="{% static "zombie.png" %}" alt="Logo"/>
         <h1>Go Scavenge</h1>
         {% if user.is_authenticated %}
@@ -16,6 +17,8 @@
         {% else %}
             How long can you <strong>{{ boldmessage }}</strong><br />
         {% endif %}
-    </body>
+    </div>
+    <!--/row-->
+    {% endblock %}
 
 </html>
