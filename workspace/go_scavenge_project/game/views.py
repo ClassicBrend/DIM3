@@ -10,14 +10,9 @@ from django.contrib.auth.models import User
 
 
 
-from houseTest import test, startGame,Player,newarea
+from House import House, Game
 
 
-def testFunc(request):
-	context = RequestContext(request)
-	testText = test()
-	testDict = startGame()
-	return HttpResponse(testText + str(testDict))
 
 def index(request):
     context = RequestContext(request)
@@ -143,5 +138,14 @@ def stay(request):
     return HttpResponse("Go Scavenge About Page")
 
 def gamescreen(request):
-    context = RequestContext(request)
-    return render_to_response('game/gamescreen.html', context)
+	context = RequestContext(request)
+	mygame = Game()
+	mygame.selectHouse(0)
+	testText = mygame.report()
+	survivors = testText[0]
+	food = testText[1]
+	ammo = testText[2]
+	moves = testText[3]
+
+	context_dict = {'food': food, 'ammo':ammo, 'moves': moves, 'survivors': survivors}
+	return render_to_response('game/gamescreen.html',context_dict, context)

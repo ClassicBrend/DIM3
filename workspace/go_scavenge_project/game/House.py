@@ -112,6 +112,12 @@ class Game():
 		print "ammo", self.ammo
 		print "moves: ", self.moves
 		print ""
+		rep = []
+		rep.append(self.survivors)
+		rep.append(self.food)
+		rep.append(self.ammo)
+		rep.append(self.moves)
+		return rep
 
 	def gameOver(self):
 		if(self.survivors<=0):
