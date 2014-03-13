@@ -139,13 +139,21 @@ def stay(request):
 
 def gamescreen(request):
 	context = RequestContext(request)
+	
 	mygame = Game()
-	mygame.selectHouse(0)
-	testText = mygame.report()
-	survivors = testText[0]
-	food = testText[1]
-	ammo = testText[2]
-	moves = testText[3]
-
-	context_dict = {'food': food, 'ammo':ammo, 'moves': moves, 'survivors': survivors}
+	
+	context_dict = {'test': "test"}
+	if 'House1' in request.POST:
+		context_dict['message'] = "House 1 was clicked!"
+		mygame.selectHouse(0)
+		mygame.inspectHouse()
+		gameData = mygame.report()
+		survivors = gameData[0]
+		food = gameData[1]
+		ammo = gameData[2]
+		moves = gameData[3]
+		context_dict['food'] = food
+		context_dict['ammo'] = ammo
+		context_dict['survivors'] = survivors
+		context_dict['moves'] = moves
 	return render_to_response('game/gamescreen.html',context_dict, context)
