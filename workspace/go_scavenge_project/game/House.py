@@ -65,6 +65,7 @@ class Game():
 		if  houseno >=0 and houseno < self.MAX_HOUSES:
 			self.athouse = houseno
 			self.moves = self.moves - self.cost_move
+				
 
 
 	def inspectHouse(self):
@@ -82,62 +83,35 @@ class Game():
 		while zombies > 0:
 			if self.ammo > 0:
 				zombies -= 1
-				self.ammo -= 1
+				self.ammo -= randint(1,2)
+				self.survivors -= randint(0,1)
 			else:
 				self.survivors -= 1
+				
 				zombies -= 1
 
 	def pickleData(self):
 		pass
-		
 
-#	def determineOutcome(food,ammo,zombies,surv):
-#	    while zombies > 0:
-#		if player.ammo > 0:
-#		    zombies -= 1
-#		    player.ammo -= 1
-#		else:
-#		    player.survivors -= 1
-#		    zombies -= 1
-#	    player.ammo += ammo
-#	    player.food += food
-#	    player.survivors += surv
-#	    player.moves -= 1
+	def updateData(self, curMoves, curFood, curAmmo, curSurvivors, curHouse, curDay):
+		self.moves = curMoves
+		self.food = curFood
+		self.ammo = curAmmo
+		self.dayno = curDay
+		self.survivors = curSurvivors
+		if curHouse != self.athouse:
+			self.moves -= 1
+		if curMoves <= 1:
+			self.dayno += 1
+			self.moves = 9
 
 
 	def report(self):
-		print "player stats"
-		print "survivors: ", self.survivors
-		print "food: ", self.food
-		print "ammo", self.ammo
-		print "moves: ", self.moves
-		print ""
 		rep = []
 		rep.append(self.survivors)
 		rep.append(self.food)
 		rep.append(self.ammo)
 		rep.append(self.moves)
+		rep.append(self.athouse)
+		rep.append(self.dayno)
 		return rep
-
-	def gameOver(self):
-		if(self.survivors<=0):
-			print "Game Over"
-
-
-#myhouse = House()
-#myhouse.show_house()
-#print myhouse.inspectRoom()
-#print myhouse.inspectRoom()
-#print myhouse.inspectRoom()
-#print myhouse.inspectRoom()
-
-
-mygame = Game()
-mygame.report()
-mygame.selectHouse(0)
-mygame.report()
-mygame.inspectHouse()
-mygame.report()
-
-
-
