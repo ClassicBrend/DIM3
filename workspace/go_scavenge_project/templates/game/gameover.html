@@ -1,19 +1,24 @@
 <html>
 
+{% extends 'game/base.html' %}
+{% load static %}
+
     <head>
         <title>You Are Dead...</title>
     </head>
     
-    <body>
-<img src=  "http://r68.cooltext.com/rendered/cooltext1469430183.png" alt="some_text" > <br />
-	<img src=  "http://upload.wikimedia.org/wikipedia/commons/9/9b/Skull_and_crossbones_vector.svg" alt="some_text"> <br />
-<h1>You are Dead.</h1>
-<h2> The zombies eat you and your team's flesh.</h2>
-<h3> Days Survived:___    Ammunition Peak: ___   Highest Number Of Survivors:___ </h3>
+    {% block body_block %}
+		<div class="hero-unit">
+			<img src=  "{% static 'img/logo.png' %}" alt="some_text" > <br />
+			<img src=  "{% static 'img/dead.svg' %}" alt="some_text" > <br />
+			<h1>You are Dead.</h1>
+			<h2> The zombies eat you and your team's flesh.</h2>
+			<h3> Days Survived:{{ days }}&nbsp;    Ammunition Peak: ___   Highest Number Of Survivors:___ </h3>
 
-<a href="http://zombieapocalypsestore.com/">Try Again!</a> 
+			<a href="/game/gamescreen/">Try Again!</a> 
 
-<button type="button" onclick="alert('Logged out!')" id="logout">Log Out</button>
-    </body>
+			
+		</div>
+    {% endblock%}
 
 </html>

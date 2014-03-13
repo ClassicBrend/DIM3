@@ -178,4 +178,3 @@ def gameover(request):
 	context = RequestContext(request)
 
 	return render_to_response('game/gameover.html', context)
-	

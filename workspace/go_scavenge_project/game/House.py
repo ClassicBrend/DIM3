@@ -115,3 +115,4 @@ class Game():
 		rep.append(self.athouse)
 		rep.append(self.dayno)
 		return rep
+

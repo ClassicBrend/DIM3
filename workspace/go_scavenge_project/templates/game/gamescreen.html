@@ -26,13 +26,20 @@
                 <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="submit" class="btn btn-primary"  name="House4" id="House4" >Scavenge House 4</button> <br /> <br />
 
                 <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="submit" class="btn btn-primary"  name="House5" id="House5" >Scavenge House 5</button> <br /> <br />
+				<input type="hidden" value= "{{ moves }}" name = "prevMoves" >
+				<input type="hidden" value= "{{ food }}" name = "prevFood" >
+				<input type="hidden" value= "{{ ammo }}" name = "prevAmmo" >
+				<input type="hidden" value= "{{ survivor }}" name = "prevSurvivors" >
+				<input type="hidden" value= "{{ curHouse }}" name="curHouse" >
+				<input type="hidden" value= "{{ days }} " name="curDay" >
 				</form>
                 <div id="stats">
+					Days Survived: {{ days }} <br />
                     Current Food Supply: {{ food }}<br />
                     Current Ammuntion: {{ ammo }} <br />
                     Current number of survivors: {{ survivors }} <br />
-                    Moves left: {{moves }} <br />
-                	{{ message }}
+                    Moves Left: {{moves }} <br />
+					Current House: {{ curHouse }} <br />
                 </div>
 
 

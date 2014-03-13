@@ -13,18 +13,20 @@
     <div class="hero-unit">
         <h1>User Profile</h1>
 	<img src=  {{ pp }} alt="Profile Picture"> <br />
+	<div id="profilediv">
+	<strong>Name: {{ user.username }} <br />
+	About: {{pa }} <br /></strong>
 	{%if stats%}
-{% for stat in stats %}
-        Name: {{ user.username }} <br />
-	Longest Session: {{ stat.max_survivors}} <br />
-	Alltime Best Amount Of Survivors: {{stat.max_survivors }}<br />
-	Alltime Highest Amount Of Supplies: {{stat.supplies }} <br />
-	About: {{pa }}
-{% endfor %}
+		{% for stat in stats %}
+			Longest Session: {{ stat.max_survivors}} <br />
+			Alltime Best Amount Of Survivors: {{stat.max_survivors }}<br />
+			Alltime Highest Amount Of Supplies: {{stat.supplies }} <br />
+		{% endfor %}
 	{%else%}
 
 	<strong>no stats available</strong>
 	{%endif%}
+	</div>
     </div>
     {% endblock %}
 
