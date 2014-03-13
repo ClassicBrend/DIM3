@@ -15,21 +15,24 @@
         <img src=  "{% static 'img/logo.png' %}" alt="some_text" > <br />
 
             <div id="gameSpace">
+				<form method="post">
+					{% csrf_token %}
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="submit" class="btn btn-primary" name="House1" id="House1" >Scavenge House 1</button> <br /> <br />
 
-                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="button" class="btn btn-primary" onclick="alert('Good Luck!')" id="House1" >Scavenge House 1</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="submit" class="btn btn-primary"  name="House2" id="House2" >Scavenge House 2</button> <br /> <br />
 
-                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House2" >Scavenge House 2</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"   alt="some_text" height="82" width="82">  <button type="submit" class="btn btn-primary"  name="House3" id="House3" >Scavenge House 3</button> <br /> <br />
 
-                <img src=  "{% static 'img/house.png' %}"   alt="some_text" height="82" width="82">  <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House3" >Scavenge House 3</button> <br /> <br />
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="submit" class="btn btn-primary"  name="House4" id="House4" >Scavenge House 4</button> <br /> <br />
 
-                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82">  <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House4" >Scavenge House 4</button> <br /> <br />
-
-                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="button" class="btn btn-primary"  onclick="alert('Good Luck!')" id="House5" >Scavenge House 5</button> <br /> <br />
-
+                <img src=  "{% static 'img/house.png' %}"  alt="some_text" height="82" width="82"> <button type="submit" class="btn btn-primary"  name="House5" id="House5" >Scavenge House 5</button> <br /> <br />
+				</form>
                 <div id="stats">
-                    Current Food Supply: <br />
-                    Current Ammuntion: <br />
-                    Current number of survivors:
+                    Current Food Supply: {{ food }}<br />
+                    Current Ammuntion: {{ ammo }} <br />
+                    Current number of survivors: {{ survivors }} <br />
+                    Moves left: {{moves }} <br />
+                	{{ message }}
                 </div>
 
 
