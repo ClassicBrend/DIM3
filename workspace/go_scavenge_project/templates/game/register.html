@@ -14,25 +14,33 @@
             {% if registered %}
             <p>Thank you for registering.</p>
 
-            <p><a href="/game/login/">Login</a> when you are ready to rango.</p>
+            <p><a href="/game/login/">Login</a> when you are ready to play.</p>
             {% else %}
             <form class="form-signin span8" id="user_form" method="post" action="/game/register/"
                   enctype="multipart/form-data">
                 {% csrf_token %}
-                <h2 class="form-signin-heading">Sign up Here</h2>
+                <legend>Sign Up Here</legend>
                 <!-- Display each form here -->
+		<div class="form-group">
 
                 {% for field in user_form.visible_fields %}
+		<label id='reglabel' for= {{ field.name }} class="col-lg-2 control-label" font-size=40px >{{ field.name }}:</label>
+		<div class="col-lg-10">
                 {{ field.errors }}
-                {{ field.help_text }}<br />
-                {{ field }}<br />
+                {{ field }}
+		</div>
                 {% endfor %}
+		
 
                 {% for field in profile_form.visible_fields %}
+		<label id='reglabel' for= {{ field.name }} class="col-lg-2 control-label"> {{ field.name }}: </label>
+		<div class="col-lg-10">
                 {{ field.errors }}
-                {{ field.help_text }}<br />
                 {{ field }}<br />
+		</div>
                 {% endfor %}
+
+		</div>
 
                 <br />
                 <!-- Provide a button to click to submit the form. -->

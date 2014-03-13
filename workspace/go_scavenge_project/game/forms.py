@@ -4,9 +4,9 @@ from django.contrib.auth.models import User
 
 
 class UserForm(forms.ModelForm):
-    username = forms.CharField(help_text="Please enter a username.")
-    email = forms.CharField(help_text="Please enter your email.")
-    password = forms.CharField(widget=forms.PasswordInput(), help_text="Please enter a password.")
+    username = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), help_text="Please enter a username.")
+    email = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), help_text="Please enter your email.")
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'class':'form-control'}), help_text="Please enter a password.")
     
     class Meta:
         model = User
@@ -14,9 +14,10 @@ class UserForm(forms.ModelForm):
 
 
 class UserProfileForm(forms.ModelForm):
-    picture = forms.ImageField(help_text="Select a profile image to upload.", required=False)
-    about = forms.URLField(help_text="About yourself", required=False)
+	
+    	about = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}), help_text="About yourself", required=False)
+	picture = forms.ImageField(help_text="Select a profile image to upload.", required=False)
 
-    class Meta:
-        model = UserProfile
-        fields = ('picture', 'about')
+    	class Meta:
+        	model = UserProfile
+        	fields = ('about', 'picture')

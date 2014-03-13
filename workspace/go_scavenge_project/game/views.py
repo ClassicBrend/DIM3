@@ -137,6 +137,7 @@ def move(request):
 def stay(request):
     return HttpResponse("Go Scavenge About Page")
 
+@login_required
 def gamescreen(request):
 	context = RequestContext(request)
 	

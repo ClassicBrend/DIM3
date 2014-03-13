@@ -12,31 +12,35 @@
     {% block body_block %}
     <div class="hero-unit">
         <img src=  "{% static 'img/logo.png' %}" ><br />
-<h2> Leaderboard </h2>	
+        <h2> Leaderboard </h2>
 
-{% if stats %}
+        {% if stats %}
 
-<table border="3" style="width:300px">
-<font size="4">
-  <th>User</th>
-  <th>Supplies</th>
-  <th>Maximum Survivors</th>
-  <th>Longest Session</th>
-</tr>
-{% for stat in stats %}
-<tr>
-  <td>{{ stat.user }}</td>
-  <td>{{ stat.supplies }}</td>
-  <td>{{ stat.max_survivors }}</td>
-  <td>{{ stat.longest_session }}</td>
-</tr>
-{% endfor %}
-</table>
-{% else %}
-            <strong>There are no categories present.</strong>
-{% endif %}
+        <table border="3" style="width:300px">
+        <font size="4">
+          <th>User</th>
+          <th>Supplies</th>
+          <th>Maximum Survivors</th>
+          <th>Longest Session</th>
+        </tr>
+        {% for stat in stats %}
+        <tr>
+          <td>{{ stat.user }}</td>
+          <td>{{ stat.supplies }}</td>
+          <td>{{ stat.max_survivors }}</td>
+          <td>{{ stat.longest_session }}</td>
+        </tr>
+        {% endfor %}
+        </font>
+        </table><br />
+        {% else %}
+                    <strong>There are no categories present.</strong><br>
+        {% endif %}
 
+        </div>
 
+    <div id="game-info">
+	<br />
  
     <a href="/game/gamescreen/" type="submit" class="btn btn-info">Play</a>
 
@@ -45,7 +49,8 @@
         {% else %}
             How long can you <strong>{{ boldmessage }}</strong><br />
         {% endif %}
-    </div>
+     </div>
+
     <!--/row-->
     {% endblock %}
 
