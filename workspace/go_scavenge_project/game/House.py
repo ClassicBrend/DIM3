@@ -91,8 +91,15 @@ class Game():
 				zombies -= 1
 
 	def pickleData(self):
+		dic={"moves":self.moves,"food":self.food,"ammo":self.ammo,"survivours":self.survivors,"atHouse":self.atHouse,"dayno":self.dayno,"houses":self.houses}
+		pickle.dump( dic, open( "save.p", "wb" ) )
 		pass
 
+	def unpickleData(self):
+		dic= pickle.load( open( "save.p", "rb" ) )
+		updateData(self,dic["moves"],dic["food"],dic["ammo"],dic["survivours"],dic["atHouse"],dic["dayno"],dic["houses"])
+		self.houses=dic["houses"]
+		
 	def updateData(self, curMoves, curFood, curAmmo, curSurvivors, curHouse, curDay):
 		self.moves = curMoves
 		self.food = curFood
