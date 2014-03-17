@@ -34,6 +34,7 @@
 				<input type="hidden" value= "{{ dayno }} " name="dayno" >
 				<input type="hidden" value= "{{ maxSurvivors }} " name="maxSurvivors" >
 				<input type="hidden" value= "{{ maxFood }} " name="maxFood" >
+                <input type="hidden" value= "{{ actHouse }}" name="actHouse" >
 				</form>
                 <div id="stats">
 					Days Survived: {{ dayno }} <br />
@@ -41,9 +42,7 @@
                     Current Ammunition: {{ ammo }} <br />
                     Current number of survivors: {{ survivors }} <br />
                     Moves Left: {{moves }} <br />
-					Current House: {{ curHouse }} <br />
-                    Max Food: {{ maxFood }}<br />
-                    Max Survivors: {{ maxSurvivors }}<br />
+					Current House: {% if  curHouse  != -1 %} {{ curHouse|add:"1" }}{% endif %} <br />
                 </div>
 
 

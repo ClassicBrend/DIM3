@@ -60,7 +60,7 @@ class Game():
     def new_day(self):
         if self.dayno > 0:
             self.food -= self.survivors
-            self.moves = 9
+            self.moves = 8
         else:
             self.moves = 8
         self.athouse = -1
@@ -90,7 +90,10 @@ class Game():
         while zombies > 0:
             if self.ammo > 0:
                 zombies -= 1
-                self.ammo -= randint(1,2)
+                if self.ammo == 1:
+                    self.ammo -= 1
+                else:
+                    self.ammo -= randint(1,2)
                 self.survivors -= randint(0,1)
             else:
                 self.survivors -= 1
@@ -108,7 +111,10 @@ class Game():
     def updateData(self, curMoves, curFood, curAmmo, curSurvivors, curHouse, curDay, maxFood, maxSurvivors):
         self.moves = curMoves
         self.food = curFood
-        self.ammo = curAmmo
+        if curAmmo > 0:
+            self.ammo = curAmmo
+        else:
+            self.ammo = 0
         self.dayno = curDay
         self.survivors = curSurvivors
         if curFood > maxFood:
