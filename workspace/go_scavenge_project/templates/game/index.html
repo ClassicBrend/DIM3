@@ -16,7 +16,7 @@
 
         {% if stats %}
 
-        <table border="3" style="width:300px">
+        <table border="3" style="width:300px" class="table table-striped table-hover ">
         <font size="4">
           <th>User</th>
           <th>Most Food</th>
@@ -43,6 +43,7 @@
 	<br />
  
     <a href="/game/gamescreen/" type="submit" class="btn btn-primary btn-lg">Play</a>
+	<br /><br />
 
         {% if user.is_authenticated %}
             How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />

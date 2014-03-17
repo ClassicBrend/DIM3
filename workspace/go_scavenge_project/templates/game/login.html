@@ -31,7 +31,10 @@
                     <button type="submit" class="btn btn-primary btn-lg">Submit</button>
                 </fieldset>
             </form>
-        
+	<br />
+        {% if  badlogin  %}
+		{{ badlogin }}
+	{% endif %}
     </div>
     {% endblock%}
 <html>

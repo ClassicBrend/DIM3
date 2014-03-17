@@ -60,8 +60,8 @@ def user_login(request):
                 return HttpResponse("Your game account is disabled.")
         else:
             # Bad login details were provided. So we can't log the user in.
-            print "Invalid login details: {0}, {1}".format(username, password)
-            return HttpResponse("Invalid login details supplied.")
+            context_dict = { 'badlogin':"Invalid login details"}
+            return render_to_response("game/login.html", context_dict, context)
 
     # The request is not a HTTP POST, so display the login form.
     # This scenario would most likely be a HTTP GET.
