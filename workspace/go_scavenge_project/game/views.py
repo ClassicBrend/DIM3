@@ -139,42 +139,45 @@ def stay(request):
 
 @login_required
 def gamescreen(request):
-	context = RequestContext(request)
-	
-	mygame = Game()
-	currentHouse = -1
-	context_dict = {'test': "test"}
-	if 'House1' in request.POST:
-		mygame.selectHouse(0)
-	if 'House2' in request.POST:
-		mygame.selectHouse(1)
-	if 'House3' in request.POST:
-		mygame.selectHouse(2)
-	if 'House4' in request.POST:
-		mygame.selectHouse(3)
-	if 'House5' in request.POST:
-		mygame.selectHouse(4)
-	prevMoves = int(request.POST.get("prevMoves") or 8)
-	prevAmmo = int(request.POST.get("prevAmmo") or 0)
-	prevSurvivors = int(request.POST.get("prevSurvivors") or 3)
-	prevFood = int(request.POST.get("prevFood") or 0)
-	currentHouse = int(request.POST.get("curHouse") or -1)
-	currentDay = int(request.POST.get("curDay") or 0)
-	mygame.updateData(prevMoves, prevFood, prevAmmo, prevSurvivors, currentHouse,currentDay)
-	mygame.inspectHouse()
-	gameData = mygame.report()
-	context_dict['survivors'] = gameData[0]
-	context_dict['food'] = gameData[1]
-	context_dict['ammo'] = gameData[2]
-	context_dict['moves'] = gameData[3]
-	context_dict['curHouse'] = gameData[4]
-	context_dict['days'] = gameData[5]
-	if gameData[0] <= 0:
-		return render_to_response('game/gameover.html', context_dict, context)
-	return render_to_response('game/gamescreen.html',context_dict, context)
+    context = RequestContext(request)
+
+    mygame = Game()
+    context_dict = {'test': "test"}
+    if 'House1' in request.POST:
+        mygame.selectHouse(0)
+    if 'House2' in request.POST:
+        mygame.selectHouse(1)
+    if 'House3' in request.POST:
+        mygame.selectHouse(2)
+    if 'House4' in request.POST:
+        mygame.selectHouse(3)
+    if 'House5' in request.POST:
+        mygame.selectHouse(4)
+    prevMoves = int(request.POST.get("prevMoves") or 8)
+    prevAmmo = int(request.POST.get("prevAmmo") or 0)
+    prevSurvivors = int(request.POST.get("prevSurvivors") or 3)
+    prevFood = int(request.POST.get("prevFood") or 0)
+    currentHouse = int(request.POST.get("curHouse") or -1)
+    currentDay = int(request.POST.get("curDay") or 0)
+    maxSurvivors = int(request.POST.get("maxSurvivors") or -1)
+    maxFood = int(request.POST.get("maxFood") or 0)
+    mygame.updateData(prevMoves, prevFood, prevAmmo, prevSurvivors, currentHouse,currentDay, maxFood, maxSurvivors)
+    mygame.inspectHouse()
+    gameData = mygame.report()
+    context_dict['survivors'] = gameData[0]
+    context_dict['food'] = gameData[1]
+    context_dict['ammo'] = gameData[2]
+    context_dict['moves'] = gameData[3]
+    context_dict['curHouse'] = gameData[4]
+    context_dict['days'] = gameData[5]
+    context_dict['maxFood'] = gameData[6]
+    context_dict['maxSurvivors'] = gameData[7]
+    if gameData[0] <= 0:
+        return render_to_response('game/gameover.html', context_dict, context)
+    return render_to_response('game/gamescreen.html',context_dict, context)
 
 @login_required
 def gameover(request):
-	context = RequestContext(request)
+    context = RequestContext(request)
 
-	return render_to_response('game/gameover.html', context)
+    return render_to_response('game/gameover.html', context)

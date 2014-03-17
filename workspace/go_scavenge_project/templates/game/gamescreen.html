@@ -29,9 +29,11 @@
 				<input type="hidden" value= "{{ moves }}" name = "prevMoves" >
 				<input type="hidden" value= "{{ food }}" name = "prevFood" >
 				<input type="hidden" value= "{{ ammo }}" name = "prevAmmo" >
-				<input type="hidden" value= "{{ survivor }}" name = "prevSurvivors" >
+				<input type="hidden" value= "{{ survivors }}" name = "prevSurvivors" >
 				<input type="hidden" value= "{{ curHouse }}" name="curHouse" >
 				<input type="hidden" value= "{{ days }} " name="curDay" >
+				<input type="hidden" value= "{{ maxSurvivors }} " name="maxSurvivors" >
+				<input type="hidden" value= "{{ maxFood }} " name="maxFood" >
 				</form>
                 <div id="stats">
 					Days Survived: {{ days }} <br />
@@ -40,6 +42,8 @@
                     Current number of survivors: {{ survivors }} <br />
                     Moves Left: {{moves }} <br />
 					Current House: {{ curHouse }} <br />
+                    Max Food: {{ maxFood }}<br />
+                    Max Survivors: {{ maxSurvivors }}<br />
                 </div>
 
 
