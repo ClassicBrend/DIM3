@@ -20,3 +20,6 @@ class Stat(models.Model):
     
     def __unicode__(self):
         return self.user.username
+
+
+

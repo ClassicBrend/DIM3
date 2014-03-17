@@ -6,6 +6,8 @@ from django.contrib.auth import authenticate, login,logout
 from django.contrib.auth.decorators import login_required
 from game.models import UserProfile, Stat
 from django.contrib.auth.models import User
+from game.House import Game, House
+import os
 
 
 
@@ -18,7 +20,7 @@ def index(request):
     context = RequestContext(request)
 
 
-    stats_list = Stat.objects.all()[:5]
+    stats_list = Stat.objects.order_by('-longest_session')[:5]
     context_dict = {'boldmessage':"Survive?", 'stats': stats_list}
     
 
@@ -123,19 +125,22 @@ def profile(request):
 
     context_dict = {'stats': individual_list, 'pa':profile[0].about, 'pp': profile[0].picture}
 
-
-
-
     return render_to_response('game/profile.html', context_dict, context)
-    
-def leaderboard(request):
-    return HttpResponse("Go Scavenge About Page")
-def play(request):
-    return HttpResponse("Go Scavenge About Page")
-def move(request):
-    return HttpResponse("Go Scavenge About Page")
-def stay(request):
-    return HttpResponse("Go Scavenge About Page")
+
+def loadgame(request):
+    context = RequestContext(request)
+
+    mygame = Game()
+
+    loaded_data = mygame.unpickleData()
+
+    context_dict = {"moves":loaded_data["moves"],"food":loaded_data["food"],"ammo":loaded_data["ammo"],"survivors":loaded_data["survivors"],"atHouse":loaded_data["atHouse"],"dayno":loaded_data["dayno"], "maxfood":loaded_data["maxfood"], "maxsurvivors":loaded_data["maxsurvivors"]}
+
+
+
+    return render_to_response('game/gamescreen.html', context_dict, context)
+
+
 
 @login_required
 def gamescreen(request):
@@ -158,7 +163,7 @@ def gamescreen(request):
     prevSurvivors = int(request.POST.get("prevSurvivors") or 3)
     prevFood = int(request.POST.get("prevFood") or 0)
     currentHouse = int(request.POST.get("curHouse") or -1)
-    currentDay = int(request.POST.get("curDay") or 0)
+    currentDay = int(request.POST.get("dayno") or 0)
     maxSurvivors = int(request.POST.get("maxSurvivors") or -1)
     maxFood = int(request.POST.get("maxFood") or 0)
     mygame.updateData(prevMoves, prevFood, prevAmmo, prevSurvivors, currentHouse,currentDay, maxFood, maxSurvivors)
@@ -169,10 +174,26 @@ def gamescreen(request):
     context_dict['ammo'] = gameData[2]
     context_dict['moves'] = gameData[3]
     context_dict['curHouse'] = gameData[4]
-    context_dict['days'] = gameData[5]
+    context_dict['dayno'] = gameData[5]
     context_dict['maxFood'] = gameData[6]
     context_dict['maxSurvivors'] = gameData[7]
     if gameData[0] <= 0:
+        os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'go_scavenge_project.settings')
+
+        profile = request.user.get_profile()
+
+        if Stat.objects.filter(user=profile.user).count()==0:
+            Stat.objects.get_or_create(user=profile.user, longest_session=gameData[5], max_survivors=gameData[7], supplies=gameData[6])
+        else:
+            s = Stat.objects.get(user=profile.user)
+            if gameData[5] > s.longest_session:
+                s.longest_session = gameData[5]
+                s.max_survivors = gameData[7]
+                s.supplies = gameData[6]
+                s.save()
+
+
+
         return render_to_response('game/gameover.html', context_dict, context)
     return render_to_response('game/gamescreen.html',context_dict, context)
 

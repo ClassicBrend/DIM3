@@ -7,6 +7,8 @@ TEMPLATE_PATH = os.path.join(PROJECT_PATH, 'templates')
 STATIC_PATH = os.path.join(PROJECT_PATH,'static')
 DATABASE_PATH = os.path.join(PROJECT_PATH, 'game.db')
 
+AUTH_PROFILE_MODULE = 'game.UserProfile'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 

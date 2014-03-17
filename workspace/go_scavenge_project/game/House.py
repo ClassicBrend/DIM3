@@ -98,12 +98,12 @@ class Game():
                 zombies -= 1
 
     def pickleData(self):
-        dic={"moves":self.moves,"food":self.food,"ammo":self.ammo,"survivors":self.survivors,"atHouse":self.athouse,"dayno":self.dayno,"houses":self.houses}
-        pickle.dump( dic, open( "save.p", "wb" ) )
+        dict={"moves":self.moves,"food":self.food,"ammo":self.ammo,"survivors":self.survivors,"atHouse":self.athouse,"dayno":self.dayno, "maxfood":self.maxFood, "maxsurvivors":self.maxSurvivors}
+        test = pickle.dump( dict, open( "save.p", "wb" ) )
 
     def unpickleData(self):
-        dic= pickle.load( open( "save.p", "rb" ) )
-        print dic
+        self.dict= pickle.load( open( "save.p", "rb" ) )
+        return self.dict
 
     def updateData(self, curMoves, curFood, curAmmo, curSurvivors, curHouse, curDay, maxFood, maxSurvivors):
         self.moves = curMoves
@@ -113,14 +113,19 @@ class Game():
         self.survivors = curSurvivors
         if curFood > maxFood:
             self.maxFood = curFood
+        else:
+            self.maxFood = maxFood
         if curSurvivors > maxSurvivors:
             self.maxSurvivors = curSurvivors
+        else:
+            self.maxSurvivors = maxSurvivors
         if curHouse != self.athouse:
             self.moves -= 1
         if curMoves <= 1:
             self.new_day()
-        self.pickleData();
-        self.unpickleData();
+        self.pickleData()
+        self.unpickleData()
+
 
 
 

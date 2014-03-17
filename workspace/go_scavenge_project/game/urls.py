@@ -10,4 +10,5 @@ urlpatterns = patterns('',
     url(r'^logout/$', views.user_logout, name='logout'),
     url(r'^gamescreen/$', views.gamescreen, name='gamescreen'),
 	url(r'^gameover/$', views.gameover, name='gameover'),
+    url(r'^loadgame/$', views.gamescreen, name='loadgame'),
 )
