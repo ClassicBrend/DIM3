@@ -1,4 +1,4 @@
-1. 
+1. Access the game by going to the URL: http://teamba.pythonanywhere.com/game/
 
 2. Click the Log-in button on the top right corner, then login in with the following credentials - Username: bob Password: test
 
