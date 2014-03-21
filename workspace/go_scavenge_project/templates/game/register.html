@@ -6,7 +6,7 @@
     <head>
         <title>GO SCAVENGE</title>
     </head>
-    
+
     {% block body_block %}
     <div class="hero-unit">
         <h1>Register with Go Scavenge</h1>
@@ -27,11 +27,12 @@
 		<label id='reglabel' for= {{ field.name }} class="col-lg-2 control-label" font-size=40px >{{ field.name }}:</label>
 		<div class="col-lg-10">
                 {{ field.errors }}
-                {{ field }}
+                {{ field }}<br/>
 		</div>
+		<br />
                 {% endfor %}
-		
 
+        <br />
                 {% for field in profile_form.visible_fields %}
 		<label id='reglabel' for= {{ field.name }} class="col-lg-2 control-label"> {{ field.name }}: </label>
 		<div class="col-lg-10">

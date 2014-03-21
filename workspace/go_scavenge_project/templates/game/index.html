@@ -7,11 +7,23 @@
     <head>
 
     </head>
-    
-    
+
+
     {% block body_block %}
     <div class="hero-unit">
+
+
         <img src=  "{% static 'img/logo.png' %}" ><br />
+        {% if user.is_authenticated %}
+            <p class="survive">
+            How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />
+            </p>
+        {% else %}
+            <p class="survive">
+            How long can you <strong>{{ boldmessage }}</strong><br />
+            </p>
+        {% endif %}
+        <br />
         <h2> Leaderboard </h2>
 
         {% if stats %}
@@ -41,15 +53,12 @@
 
     <div id="game-info">
 	<br />
- 
-    <a href="/game/gamescreen/" type="submit" class="btn btn-primary btn-lg">Play</a>
+	<a href="/game/gamescreen/" type="submit" class="btn btn-primary btn-lg">Play</a>
+
+
 	<br /><br />
 
-        {% if user.is_authenticated %}
-            How long can {{ user.username }} <strong>{{ boldmessage }}</strong><br />
-        {% else %}
-            How long can you <strong>{{ boldmessage }}</strong><br />
-        {% endif %}
+
      </div>
 
     <!--/row-->
